@@ -1,0 +1,11 @@
+.login {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign-up {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}

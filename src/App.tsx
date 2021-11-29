@@ -2,12 +2,13 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
 import Login from './Auth/Login';
+import SignUp from './Auth/SignUp';
 
 const App = () => {
   return (
     <div>
-      <h1>Hi there!</h1>
       <Login />
+      <SignUp />
     </div>
   );
 };
