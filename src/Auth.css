@@ -1,0 +1,26 @@
+.login {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign-up {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.warning {
+  font-size: 14px;
+  color: red;
+}
+
+.button {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.authInputs {
+  padding: 10px;
+}

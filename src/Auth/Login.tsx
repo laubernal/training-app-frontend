@@ -1,20 +1,25 @@
 import * as React from 'react';
 
-import ButtonComponent from '../ButtonComponent';
+import ButtonComponent from '../components/ButtonComponent';
 import SectionTitle from '../SectionTitle';
-import '../Login.css';
+import '../Auth.css';
 
 const Login = () => {
   return (
     <div className="login">
-      <SectionTitle text="Login" />
-      <h4>Email</h4>
-      <input type="text" id="email" placeholder="email" />
-      <br />
-      <h4>Password</h4>
-      <input type="text" id="password" placeholder="password" />
-      <br />
-      <ButtonComponent text="Submit" />
+      <SectionTitle text="Log in" />
+
+      <div className="authInputs">
+        <label>Email</label>
+        <input type="text" id="email" placeholder="Enter your email" />
+      </div>
+
+      <div className="authInputs">
+        <label>Password</label>
+        <input type="text" id="password" placeholder="Enter your password" />
+      </div>
+
+      <ButtonComponent text="Log in" />
     </div>
   );
 };
