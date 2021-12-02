@@ -6,35 +6,40 @@ import '../Auth.css';
 
 const SignUp = () => {
   return (
-    <div className="sign-up">
-      <form>
-        <SectionTitle text="Sign Up" />
-
-        <div className="authInputs">
-          <label>Name</label>
-          <input type="text" id="name" placeholder="name" />
+    <form className="ui form sign-up">
+      <SectionTitle text="Sign Up" /> <br />
+      <div className="field required">
+        <label>Name</label>
+        <div className="ui left icon input">
+          <input type="text" placeholder="Enter your name" />
+          <i className="user icon"></i>
         </div>
-
-        <div className="authInputs">
-          <label>Email</label>
-          <input type="text" id="email" placeholder="email" />
+      </div>
+      <div className="field required">
+        <label>Email</label>
+        <div className="ui left icon input">
+          <input type="text"placeholder="Enter your email" />
+          <i className="at icon"></i>
         </div>
-
-        <div className="authInputs">
-          <label>Password</label>
-          <input type="text" id="password" placeholder="password" />
-          <p className="warning">Password must have more than 8 characters</p>
+      </div>
+      <div className="field required">
+        <label>Password</label>
+        <div className="ui left icon input">
+          <input type="password" placeholder="Enter your password" />
+          <i className="lock icon"></i>
         </div>
-
-        <div className="authInputs">
-          <label>Password Confirmation</label>
-          <input type="text" id="passwordConfirmation" placeholder="passwordConfirmation" />
-          <br />
+        <br />
+        <p className="warning">Password must have more than 8 characters</p>
+      </div>
+      <div className="field required">
+        <label>Password Confirmation</label>
+        <div className="ui left icon input">
+          <input type="password" placeholder="Repeat your password" />
+          <i className="lock icon"></i>
         </div>
-
-        <ButtonComponent text="Sign up" />
-      </form>
-    </div>
+      </div>
+      <ButtonComponent text="Sign up" />
+    </form>
   );
 };
 

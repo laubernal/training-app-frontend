@@ -6,8 +6,8 @@ type ButtonProps = {
 
 const ButtonComponent = ({ text }: ButtonProps): JSX.Element => {
   return (
-    <div className="button">
-      <button>{text}</button>
+    <div className="buttonLayout">
+      <button className="ui button">{text}</button>
     </div>
   );
 };

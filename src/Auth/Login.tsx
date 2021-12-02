@@ -6,21 +6,24 @@ import '../Auth.css';
 
 const Login = () => {
   return (
-    <div className="login">
-      <SectionTitle text="Log in" />
-
-      <div className="authInputs">
+    <form className="ui form login">
+      <SectionTitle text="Login" /> <br />
+      <div className="field required">
         <label>Email</label>
-        <input type="text" id="email" placeholder="Enter your email" />
+        <div className="ui left icon input">
+          <input type="text" placeholder="Enter your email" />
+          <i className="at icon"></i>
+        </div>
       </div>
-
-      <div className="authInputs">
+      <div className="field required">
         <label>Password</label>
-        <input type="text" id="password" placeholder="Enter your password" />
+        <div className="ui left icon input">
+          <input type="password" placeholder="Enter your password" />
+          <i className="lock icon"></i>
+        </div>
       </div>
-
-      <ButtonComponent text="Log in" />
-    </div>
+      <ButtonComponent text="Login" />
+    </form>
   );
 };
 
