@@ -1,7 +1,9 @@
-import React from 'react';
+import * as React from 'react';
+import { Link, Routes, Route } from 'react-router-dom';
 
 import ButtonComponent from '../components/ButtonComponent';
 import SectionTitle from '../SectionTitle';
+import Login from './Login';
 import '../Auth.css';
 
 const SignUp = () => {
@@ -18,7 +20,7 @@ const SignUp = () => {
       <div className="field required">
         <label>Email</label>
         <div className="ui left icon input">
-          <input type="text"placeholder="Enter your email" />
+          <input type="text" placeholder="Enter your email" />
           <i className="at icon"></i>
         </div>
       </div>
@@ -37,6 +39,14 @@ const SignUp = () => {
           <input type="password" placeholder="Repeat your password" />
           <i className="lock icon"></i>
         </div>
+      </div>
+      <div>
+        <p>
+          Already have an account? <Link to="/login">Login!</Link>
+        </p>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+        </Routes>
       </div>
       <ButtonComponent text="Sign up" />
     </form>
