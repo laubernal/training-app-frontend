@@ -7,7 +7,7 @@ type TitleProps = {
 const SectionTitle = ({ text }: TitleProps) => {
   return (
     <div>
-      <h1 className="ui header">{text}</h1>
+      <h1 className="ui header title">{text}</h1>
     </div>
   );
 };

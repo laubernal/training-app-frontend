@@ -4,9 +4,9 @@ import { Link, Routes, Route } from 'react-router-dom';
 import ButtonComponent from '../components/ButtonComponent';
 import SectionTitle from '../SectionTitle';
 import Login from './Login';
-import '../Auth.css';
+import './Auth.css';
 
-const SignUp = () => {
+const SignUp = (): JSX.Element => {
   return (
     <form className="ui form sign-up">
       <SectionTitle text="Sign Up" /> <br />
@@ -30,8 +30,9 @@ const SignUp = () => {
           <input type="password" placeholder="Enter your password" />
           <i className="lock icon"></i>
         </div>
-        <br />
-        <p className="warning">Password must have more than 8 characters</p>
+        <div className="ui pointing red basic small label">
+          Your password must be 6 characters or more
+        </div>
       </div>
       <div className="field required">
         <label>Password Confirmation</label>
@@ -43,7 +44,7 @@ const SignUp = () => {
       <div>
         <p>
           Already have an account? <Link to="/login">Login!</Link>
-        </p>
+        </p> <br />
         <Routes>
           <Route path="/login" element={<Login />} />
         </Routes>

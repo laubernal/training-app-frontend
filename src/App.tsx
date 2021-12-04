@@ -1,21 +1,23 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Login from './Auth/Login';
 import SignUp from './Auth/SignUp';
-import Home from './Home';
+import TopNavBar from './TopNavBar';
 import './App.css';
+import Home from './Home/Home';
 
 const App = () => {
   return (
     <Router>
       <div className="auth">
-        <Home />
+        <TopNavBar />
 
         <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/login/*" element={<Login />} />
+          <Route path="/signup/*" element={<SignUp />} />
         </Routes>
       </div>
     </Router>

@@ -4,9 +4,9 @@ import { Link, Routes, Route } from 'react-router-dom';
 import ButtonComponent from '../components/ButtonComponent';
 import SectionTitle from '../SectionTitle';
 import SignUp from './SignUp';
-import '../Auth.css';
+import './Auth.css';
 
-const Login = () => {
+const Login = (): JSX.Element => {
   return (
     <form className="ui form login">
       <SectionTitle text="Login" /> <br />
@@ -27,7 +27,8 @@ const Login = () => {
       <div>
         <p>
           Need an account? <Link to="/signup">Sign up!</Link>
-        </p>
+        </p>{' '}
+        <br />
         <Routes>
           <Route path="/signup" element={<SignUp />} />
         </Routes>

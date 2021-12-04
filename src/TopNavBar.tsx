@@ -1,12 +1,14 @@
 import * as React from 'react';
-import { Link, Routes, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import SectionTitle from './SectionTitle';
 
-const Home = () => {
+const TopNavBar = (): JSX.Element => {
   return (
     <div className="ui menu">
       <Link className="ui header" to="/">
-        Training app
+        <SectionTitle text="Training App" />
       </Link>
+
       <div className="right menu">
         <Link className="item" to="/signup">
           Sign up
@@ -19,4 +21,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default TopNavBar;
