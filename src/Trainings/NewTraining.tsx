@@ -27,13 +27,16 @@ const NewTraining = (): JSX.Element => {
         </div>
       </div>
       <br />
-      <div className="inline fields">
+      <div className="inline fields three wide">
         <h4 className="ui field dividing header">Sets</h4>
         <h4 className="ui field dividing header">Reps</h4>
         <h4 className="ui field dividing header">Weight (Kg)</h4>
       </div>
       <div className="inline three fields">
-
+        <input type="number" />
+        <input type="number" />
+        <label>X</label>
+        <input type="number" />
       </div>
     </div>
   );
