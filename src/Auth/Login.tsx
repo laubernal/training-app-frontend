@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link, Routes, Route } from 'react-router-dom';
 
 import ButtonComponent from '../components/ButtonComponent';
-import SectionTitle from '../SectionTitle';
+import SectionTitle from '../components/SectionTitle';
 import SignUp from './SignUp';
 import './Auth.css';
 

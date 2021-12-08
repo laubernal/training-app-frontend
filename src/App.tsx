@@ -4,9 +4,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Login from './Auth/Login';
 import SignUp from './Auth/SignUp';
-import TopNavBar from './TopNavBar';
+import TopNavBar from './components/TopNavBar';
 import './App.css';
 import Home from './Home/Home';
+import NewTraining from './Trainings/NewTraining';
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/login/*" element={<Login />} />
           <Route path="/signup/*" element={<SignUp />} />
+          <Route path="/new/*" element={<NewTraining />} />
         </Routes>
       </div>
     </Router>

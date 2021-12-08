@@ -10,6 +10,7 @@ const TopNavBar = (): JSX.Element => {
       </Link>
 
       <div className="right menu">
+        <Link className="item" to="/new">New training</Link>
         <Link className="item" to="/signup">
           Sign up
         </Link>

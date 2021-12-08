@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link, Routes, Route } from 'react-router-dom';
 
 import ButtonComponent from '../components/ButtonComponent';
-import SectionTitle from '../SectionTitle';
+import SectionTitle from '../components/SectionTitle';
 import Login from './Login';
 import './Auth.css';
 
@@ -31,7 +31,7 @@ const SignUp = (): JSX.Element => {
           <i className="lock icon"></i>
         </div>
         <div className="ui pointing red basic small label">
-          Your password must be 6 characters or more
+          Your password must be at least 6 characters
         </div>
       </div>
       <div className="field required">
