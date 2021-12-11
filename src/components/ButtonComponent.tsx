@@ -1,14 +1,16 @@
 import * as React from 'react';
 
+const { useState } = React;
+
 type ButtonProps = {
   text: string;
 };
 
 const ButtonComponent = ({ text }: ButtonProps): JSX.Element => {
-  const [count, setCount] = React.useState(0);
+  const [count, setCount] = useState(0);
 
-  const onButtonClick = (event: React.MouseEvent<HTMLButtonElement>): void => {
-    event.preventDefault();
+  const onButtonClick = (e: React.MouseEvent<HTMLButtonElement>): void => {
+    e.preventDefault();
     setCount(count + 1);
   };
 

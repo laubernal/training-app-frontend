@@ -6,14 +6,15 @@ import SectionTitle from '../components/SectionTitle';
 import Login from './Login';
 import './Auth.css';
 
+const { useState } = React;
+
 const SignUp = (): JSX.Element => {
-  const [showPasswordAlert, setShowPasswordAlert] = React.useState(false);
+  const [name, setName] = useState('');
+  const [showPasswordAlert, setShowPasswordAlert] = useState(false);
 
   const onInputClick = (event: React.MouseEvent<HTMLInputElement, MouseEvent>): void => {
     event.preventDefault();
-    console.log('Input clicked');
-    setShowPasswordAlert(true);
-    return;
+    showPasswordAlert ? setShowPasswordAlert(false) : setShowPasswordAlert(true);
   };
 
   return (
@@ -22,7 +23,15 @@ const SignUp = (): JSX.Element => {
       <div className="field required">
         <label>Name</label>
         <div className="ui left icon input">
-          <input type="text" placeholder="Enter your name" />
+          <input
+            autoFocus
+            type="text"
+            placeholder="Enter your name"
+            onChange={e => {
+              setName(e.target.value);
+              console.log(name);
+            }}
+          />
           <i className="user icon"></i>
         </div>
       </div>
@@ -42,12 +51,12 @@ const SignUp = (): JSX.Element => {
             onClick={(e: React.MouseEvent<HTMLInputElement, MouseEvent>) => onInputClick(e)}
           />
           <i className="lock icon"></i>
-          {showPasswordAlert ? (
-            <div className="ui pointing red basic small label">
-              Your password must be at least 6 characters
-            </div>
-          ) : null}
         </div>
+        {showPasswordAlert ? (
+          <div className="ui pointing red basic small label">
+            Your password must be at least 6 characters
+          </div>
+        ) : null}
       </div>
       <div className="field required">
         <label>Password Confirmation</label>

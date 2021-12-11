@@ -13,7 +13,7 @@ const Login = (): JSX.Element => {
       <div className="field required">
         <label>Email</label>
         <div className="ui left icon input">
-          <input type="text" placeholder="Enter your email" />
+          <input autoFocus type="text" placeholder="Enter your email" />
           <i className="at icon"></i>
         </div>
       </div>
