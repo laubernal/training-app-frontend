@@ -7,6 +7,15 @@ import Login from './Login';
 import './Auth.css';
 
 const SignUp = (): JSX.Element => {
+  const [showPasswordAlert, setShowPasswordAlert] = React.useState(false);
+
+  const onInputClick = (event: React.MouseEvent<HTMLInputElement, MouseEvent>): void => {
+    event.preventDefault();
+    console.log('Input clicked');
+    setShowPasswordAlert(true);
+    return;
+  };
+
   return (
     <form className="ui form sign-up">
       <SectionTitle text="Sign Up" /> <br />
@@ -27,11 +36,17 @@ const SignUp = (): JSX.Element => {
       <div className="field required">
         <label>Password</label>
         <div className="ui left icon input">
-          <input type="password" placeholder="Enter your password" />
+          <input
+            type="password"
+            placeholder="Enter your password"
+            onClick={(e: React.MouseEvent<HTMLInputElement, MouseEvent>) => onInputClick(e)}
+          />
           <i className="lock icon"></i>
-        </div>
-        <div className="ui pointing red basic small label">
-          Your password must be at least 6 characters
+          {showPasswordAlert ? (
+            <div className="ui pointing red basic small label">
+              Your password must be at least 6 characters
+            </div>
+          ) : null}
         </div>
       </div>
       <div className="field required">
@@ -44,7 +59,8 @@ const SignUp = (): JSX.Element => {
       <div>
         <p>
           Already have an account? <Link to="/login">Login!</Link>
-        </p> <br />
+        </p>{' '}
+        <br />
         <Routes>
           <Route path="/login" element={<Login />} />
         </Routes>
