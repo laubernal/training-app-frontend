@@ -12,8 +12,8 @@ const SignUp = (): JSX.Element => {
   const [name, setName] = useState('');
   const [showPasswordAlert, setShowPasswordAlert] = useState(false);
 
-  const onInputClick = (event: React.MouseEvent<HTMLInputElement, MouseEvent>): void => {
-    event.preventDefault();
+  const onInputClick = (e: React.MouseEvent<HTMLInputElement, MouseEvent>): void => {
+    e.preventDefault();
     showPasswordAlert ? setShowPasswordAlert(false) : setShowPasswordAlert(true);
   };
 
@@ -74,7 +74,10 @@ const SignUp = (): JSX.Element => {
           <Route path="/login" element={<Login />} />
         </Routes>
       </div>
-      <ButtonComponent text="Sign up" />
+      <ButtonComponent
+        text="Sign up"
+        onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => console.log('clicked')}
+      />
     </form>
   );
 };

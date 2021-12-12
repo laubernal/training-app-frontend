@@ -1,24 +1,25 @@
 import * as React from 'react';
 
-const { useState } = React;
+// const { useState } = React;
 
 type ButtonProps = {
   text: string;
+  onClick: (e: any) => void;
 };
 
-const ButtonComponent = ({ text }: ButtonProps): JSX.Element => {
-  const [count, setCount] = useState(0);
+const ButtonComponent = ({ text, onClick }: ButtonProps): JSX.Element => {
+  // const [count, setCount] = useState(0);
 
-  const onButtonClick = (e: React.MouseEvent<HTMLButtonElement>): void => {
-    e.preventDefault();
-    setCount(count + 1);
-  };
+  // const onButtonClick = (e: React.MouseEvent<HTMLButtonElement>): void => {
+  //   e.preventDefault();
+  //   setCount(count + 1);
+  // };
 
   return (
     <div className="buttonLayout">
       <button
         className="ui button"
-        onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => onButtonClick(e)}
+        onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => onClick(e)}
       >
         {text}
       </button>

@@ -33,7 +33,7 @@ const Login = (): JSX.Element => {
           <Route path="/signup" element={<SignUp />} />
         </Routes>
       </div>
-      <ButtonComponent text="Login" />
+      <ButtonComponent text="Login" onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => console.log('clicked')}/>
     </form>
   );
 };

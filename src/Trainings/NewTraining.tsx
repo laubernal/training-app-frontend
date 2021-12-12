@@ -1,8 +1,18 @@
 import * as React from 'react';
+
 import ButtonComponent from '../components/ButtonComponent';
 import SectionTitle from '../components/SectionTitle';
 
+const { useState } = React;
+
 const NewTraining = (): JSX.Element => {
+  const [addSet, setAddSet] = useState(false);
+
+  const onAddSetClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
+    e.preventDefault();
+    addSet ? setAddSet(false) : setAddSet(true);
+  };
+
   return (
     <div className="ui form login">
       <SectionTitle text="New training" /> <br />
@@ -39,13 +49,35 @@ const NewTraining = (): JSX.Element => {
         <label>X</label>
         <input className="field" type="number" />
       </div>
+      {addSet ? (
+        <div className="inline four fields" style={{ justifyContent: 'space-between' }}>
+          <input className="field" type="number" />
+          <input className="field" type="number" />
+          <label>X</label>
+          <input className="field" type="number" />
+        </div>
+      ) : null}
       <div className="inline fields" style={{ justifyContent: 'space-evenly' }}>
-        <ButtonComponent text="Add set"/>
-        <ButtonComponent text="Submit exercise" />
+        <ButtonComponent
+          text="Add set"
+          onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+            setAddSet(true);
+          }}
+        />
+        <ButtonComponent
+          text="Submit exercise"
+          onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => onAddSetClick(e)}
+        />
       </div>
       <div className="inline fields" style={{ justifyContent: 'space-evenly' }}>
-        <ButtonComponent text="Add exercise" />
-        <ButtonComponent text="Submit training" />
+        <ButtonComponent
+          text="Add exercise"
+          onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => console.log('clicked')}
+        />
+        <ButtonComponent
+          text="Submit training"
+          onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => console.log('clicked')}
+        />
       </div>
     </div>
   );
