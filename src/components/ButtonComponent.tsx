@@ -16,10 +16,13 @@ const ButtonComponent = ({ text }: ButtonProps): JSX.Element => {
 
   return (
     <div className="buttonLayout">
-      <button className="ui button" onClick={e => onButtonClick(e)}>
+      <button
+        className="ui button"
+        onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => onButtonClick(e)}
+      >
         {text}
       </button>
-      <h1>{`Button count: ${count}`}</h1>
+      {/* <h1>{`Button count: ${count}`}</h1> */}
     </div>
   );
 };

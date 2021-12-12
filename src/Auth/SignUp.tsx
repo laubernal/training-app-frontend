@@ -27,7 +27,7 @@ const SignUp = (): JSX.Element => {
             autoFocus
             type="text"
             placeholder="Enter your name"
-            onChange={e => {
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               setName(e.target.value);
               console.log(name);
             }}
