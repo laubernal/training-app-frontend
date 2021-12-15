@@ -2,15 +2,16 @@ import * as React from 'react';
 
 import ButtonComponent from '../components/ButtonComponent';
 import SectionTitle from '../components/SectionTitle';
+import SetsDataComponent from './SetsDataComponent';
 
 const { useState } = React;
 
 const NewTraining = (): JSX.Element => {
-  const [addSet, setAddSet] = useState(false);
+  const [addSet, setAddSet] = useState([SetsDataComponent]);
 
   const onAddSetClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
     e.preventDefault();
-    addSet ? setAddSet(false) : setAddSet(true);
+    setAddSet([...addSet, SetsDataComponent]);
   };
 
   return (
@@ -38,45 +39,43 @@ const NewTraining = (): JSX.Element => {
         </div>
       </div>
       <br />
-      <div className="inline fields four wide" style={{ justifyContent: 'space-between' }}>
+      <div
+        className="inline fields"
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(4, 1fr)',
+        }}
+      >
         <h4 className="ui field dividing header required">Sets</h4>
         <h4 className="ui field dividing header required">Reps</h4>
         <h4 className="ui field dividing header required">Weight (Kg)</h4>
       </div>
-      <div className="inline four fields" style={{ justifyContent: 'space-between' }}>
-        <input className="field" type="number" />
-        <input className="field" type="number" />
-        <label>X</label>
-        <input className="field" type="number" />
-      </div>
-      {addSet ? (
-        <div className="inline four fields" style={{ justifyContent: 'space-between' }}>
-          <input className="field" type="number" />
-          <input className="field" type="number" />
-          <label>X</label>
-          <input className="field" type="number" />
-        </div>
-      ) : null}
+      {addSet.map(set => (
+        <SetsDataComponent />
+      ))}
       <div className="inline fields" style={{ justifyContent: 'space-evenly' }}>
-        <ButtonComponent
-          text="Add set"
-          onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-            setAddSet(true);
-          }}
-        />
+        <ButtonComponent text="Add set" onClick={onAddSetClick} />
+
         <ButtonComponent
           text="Submit exercise"
-          onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => onAddSetClick(e)}
+          onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
+            console.log('clicked submit exercise')
+          }
         />
       </div>
       <div className="inline fields" style={{ justifyContent: 'space-evenly' }}>
         <ButtonComponent
           text="Add exercise"
-          onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => console.log('clicked')}
+          onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
+            console.log('clicked add exercise')
+          }
         />
+
         <ButtonComponent
           text="Submit training"
-          onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => console.log('clicked')}
+          onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
+            console.log('clicked submit training')
+          }
         />
       </div>
     </div>
