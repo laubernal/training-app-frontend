@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import ButtonComponent from '../components/ButtonComponent';
+import InputComponent from '../components/InputComponent';
 import SectionTitle from '../components/SectionTitle';
 import SetsDataComponent from './SetsDataComponent';
 
@@ -21,13 +22,13 @@ const NewTraining = (): JSX.Element => {
         <div className="field required">
           <label>Training title</label> <br />
           <div className="ui input">
-            <input type="text" placeholder="Training title" />
+            <InputComponent type="text" placeholder="Training title" />
           </div>
         </div>
         <div className="field required">
           <label>Date</label> <br />
           <div className="ui input">
-            <input type="date" />
+            <InputComponent type="date" />
           </div>
         </div>
       </div>
@@ -35,10 +36,9 @@ const NewTraining = (): JSX.Element => {
       <div className="field required">
         <label>Exercise name</label>
         <div className="ui input">
-          <input type="text" placeholder="Exercise name" />
+          <InputComponent type="text" placeholder="Exercise name" />
         </div>
       </div>
-      <br />
       <div
         className="inline fields"
         style={{
