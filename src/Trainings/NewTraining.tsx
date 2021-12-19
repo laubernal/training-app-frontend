@@ -3,16 +3,32 @@ import * as React from 'react';
 import ButtonComponent from '../components/ButtonComponent';
 import InputComponent from '../components/InputComponent';
 import SectionTitle from '../components/SectionTitle';
-import SetsDataComponent from './SetsDataComponent';
+import SetsRow from './SetsRow';
 
 const { useState } = React;
 
-const NewTraining = (): JSX.Element => {
-  const [addSet, setAddSet] = useState([SetsDataComponent]);
+const setRow: { set: string; reps: string; weight: string } = { set: '', reps: '', weight: '' };
 
-  const onAddSetClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
+const NewTraining = (): JSX.Element => {
+  const [setList, setAddSet] = useState([setRow]);
+
+  const handleAddSetClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
     e.preventDefault();
-    setAddSet([...addSet, SetsDataComponent]);
+    setAddSet([...setList, setRow]);
+  };
+
+  const handleRemoveSetClick = (index: number): void => {
+    const set = [...setList];
+    set.splice(index, 1);
+    setAddSet(set);
+  };
+
+  const handleInputChange = (e: any, index: number) => {
+    const { setInput, value } = e.target;
+    console.log(setInput, value);
+    const sets: { [key: string]: string }[] = [...setList];
+    sets[index][setInput] = value;
+    setAddSet(sets as { set: string; reps: string; weight: string }[]);
   };
 
   return (
@@ -50,11 +66,19 @@ const NewTraining = (): JSX.Element => {
         <h4 className="ui field dividing header required">Reps</h4>
         <h4 className="ui field dividing header required">Weight (Kg)</h4>
       </div>
-      {addSet.map(set => (
-        <SetsDataComponent />
-      ))}
+      {setList.map((set, index) => {
+        return (
+          <SetsRow
+            row={set}
+            index={index}
+            handleAddSetClick={handleAddSetClick}
+            handleRemoveSetClick={handleRemoveSetClick}
+            handleInputChange={handleInputChange}
+          />
+        );
+      })}
       <div className="inline fields" style={{ justifyContent: 'space-evenly' }}>
-        <ButtonComponent text="Add set" onClick={onAddSetClick} />
+        <ButtonComponent text="Add set" onClick={handleAddSetClick} />
 
         <ButtonComponent
           text="Submit exercise"
