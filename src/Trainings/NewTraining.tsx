@@ -7,13 +7,17 @@ import SetsRow from './SetsRow';
 
 const { useState } = React;
 
-const setRow: { set: string; reps: string; weight: string } = { set: '', reps: '', weight: '' };
+type setRowType = { set: string; reps: string; weight: string };
+
+const setRow: setRowType = { set: '', reps: '', weight: '' };
 
 const NewTraining = (): JSX.Element => {
   const [setList, setAddSet] = useState([setRow]);
 
   const handleAddSetClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
     e.preventDefault();
+    console.log('setList', ...setList);
+    console.log('setRow', setRow);
     setAddSet([...setList, setRow]);
   };
 
@@ -24,11 +28,11 @@ const NewTraining = (): JSX.Element => {
   };
 
   const handleInputChange = (e: any, index: number) => {
-    const { setInput, value } = e.target;
-    console.log(setInput, value);
+    const { name, value } = e.target;
+    console.log('index', index);
     const sets: { [key: string]: string }[] = [...setList];
-    sets[index][setInput] = value;
-    setAddSet(sets as { set: string; reps: string; weight: string }[]);
+    sets[index][name] = value;
+    setAddSet(sets as setRowType[]);
   };
 
   return (
@@ -68,13 +72,15 @@ const NewTraining = (): JSX.Element => {
       </div>
       {setList.map((set, index) => {
         return (
-          <SetsRow
-            row={set}
-            index={index}
-            handleAddSetClick={handleAddSetClick}
-            handleRemoveSetClick={handleRemoveSetClick}
-            handleInputChange={handleInputChange}
-          />
+          <div key={index}>
+            <SetsRow
+              row={set}
+              index={index}
+              handleAddSetClick={handleAddSetClick}
+              handleRemoveSetClick={handleRemoveSetClick}
+              handleInputChange={handleInputChange}
+            />
+          </div>
         );
       })}
       <div className="inline fields" style={{ justifyContent: 'space-evenly' }}>

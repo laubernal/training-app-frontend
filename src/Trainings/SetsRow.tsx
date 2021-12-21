@@ -3,13 +3,7 @@ import * as React from 'react';
 import ButtonComponent from '../components/ButtonComponent';
 import InputComponent from '../components/InputComponent';
 
-const SetsRow = ({
-  row,
-  index,
-  handleAddSetClick,
-  handleRemoveSetClick,
-  handleInputChange,
-}: any): JSX.Element => {
+const SetsRow = ({ row, index, handleRemoveSetClick, handleInputChange }: any): JSX.Element => {
   return (
     <div
       className="inline"
@@ -17,27 +11,34 @@ const SetsRow = ({
         display: 'grid',
         gridTemplateColumns: 'repeat(5, 0.5fr)',
         gap: '0px 10px',
+        paddingBottom: '10px',
       }}
     >
       <InputComponent
+        name="set"
         type="number"
         min="1"
         placeholder="Set"
+        value={row.set}
         handleInputChange={handleInputChange}
         index={index}
       />
       <InputComponent
+        name="reps"
         type="number"
         min="1"
         placeholder="Reps"
+        value={row.reps}
         handleInputChange={handleInputChange}
         index={index}
       />
       <i className="x icon" style={{ padding: '10px 35px' }}></i>
       <InputComponent
+        name="weight"
         type="number"
         min="0"
         placeholder="Weight (Kg)"
+        value={row.weight}
         handleInputChange={handleInputChange}
         index={index}
       />
@@ -45,7 +46,6 @@ const SetsRow = ({
       <ButtonComponent
         text="Remove"
         onClick={() => {
-          console.log(handleRemoveSetClick);
           handleRemoveSetClick(index);
         }}
       />
