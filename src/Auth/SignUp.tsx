@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link, Routes, Route } from 'react-router-dom';
 
-import ButtonComponent from '../components/ButtonComponent';
+import Button from '../components/Button';
 import SectionTitle from '../components/SectionTitle';
 import Login from './Login';
 import './Auth.css';
@@ -74,7 +74,7 @@ const SignUp = (): JSX.Element => {
           <Route path="/login" element={<Login />} />
         </Routes>
       </div>
-      <ButtonComponent
+      <Button
         text="Sign up"
         onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => console.log('clicked')}
       />

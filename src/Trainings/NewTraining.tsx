@@ -1,7 +1,8 @@
 import * as React from 'react';
 
-import ButtonComponent from '../components/ButtonComponent';
-import InputComponent from '../components/InputComponent';
+import Button from '../components/Button';
+import Dropdown from '../components/Dropdown';
+import Input from '../components/Input';
 import SectionTitle from '../components/SectionTitle';
 import SetsRow from './SetsRow';
 
@@ -16,8 +17,6 @@ const NewTraining = (): JSX.Element => {
 
   const handleAddSetClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
     e.preventDefault();
-    console.log('setList', ...setList);
-    console.log('setRow', setRow);
     setAddSet([...setList, setRow]);
   };
 
@@ -41,21 +40,22 @@ const NewTraining = (): JSX.Element => {
         <div className="field required">
           <label>Training title</label> <br />
           <div className="ui input">
-            <InputComponent type="text" placeholder="Training title" />
+            <Input type="text" placeholder="Training title" />
           </div>
         </div>
         <div className="field required">
           <label>Date</label> <br />
           <div className="ui input">
-            <InputComponent type="date" />
+            <Input type="date" />
           </div>
         </div>
       </div>
       <br />
-      <div className="field required">
+      <div className=" field required">
         <label>Exercise name</label>
-        <div className="ui input">
-          <InputComponent type="text" placeholder="Exercise name" />
+        <div className="ui input inline">
+          <Input type="text" placeholder="Exercise name" />
+          <Dropdown />
         </div>
       </div>
       <div
@@ -81,9 +81,9 @@ const NewTraining = (): JSX.Element => {
         );
       })}
       <div className="inline fields" style={{ justifyContent: 'space-evenly' }}>
-        <ButtonComponent text="Add set" onClick={handleAddSetClick} />
+        <Button text="Add set" onClick={handleAddSetClick} />
 
-        <ButtonComponent
+        <Button
           text="Submit exercise"
           onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
             console.log('clicked submit exercise')
@@ -91,14 +91,14 @@ const NewTraining = (): JSX.Element => {
         />
       </div>
       <div className="inline fields" style={{ justifyContent: 'space-evenly' }}>
-        <ButtonComponent
+        <Button
           text="Add exercise"
           onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
             console.log('clicked add exercise')
           }
         />
 
-        <ButtonComponent
+        <Button
           text="Submit training"
           onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
             console.log('clicked submit training')

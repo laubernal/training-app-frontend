@@ -9,7 +9,7 @@ type InputProps = {
   index?: number;
 };
 
-const InputComponent = ({
+const Input = ({
   name,
   type,
   min,
@@ -26,7 +26,6 @@ const InputComponent = ({
       placeholder={placeholder}
       onChange={e => {
         if (handleInputChange) {
-          console.log(`input ${name} of row ${index} changed to ${e.target.value}`);
           handleInputChange(e, index);
         }
       }}
@@ -34,4 +33,4 @@ const InputComponent = ({
   );
 };
 
-export default InputComponent;
+export default Input;

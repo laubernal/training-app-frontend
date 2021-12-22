@@ -7,7 +7,7 @@ type ButtonProps = {
   onClick: (e: any) => void;
 };
 
-const ButtonComponent = ({ text, onClick }: ButtonProps): JSX.Element => {
+const Button = ({ text, onClick }: ButtonProps): JSX.Element => {
   // const [count, setCount] = useState(0);
 
   // const onButtonClick = (e: React.MouseEvent<HTMLButtonElement>): void => {
@@ -28,4 +28,4 @@ const ButtonComponent = ({ text, onClick }: ButtonProps): JSX.Element => {
   );
 };
 
-export default ButtonComponent;
+export default Button;

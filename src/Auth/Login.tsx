@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link, Routes, Route } from 'react-router-dom';
 
-import ButtonComponent from '../components/ButtonComponent';
+import Button from '../components/Button';
 import SectionTitle from '../components/SectionTitle';
 import SignUp from './SignUp';
 import './Auth.css';
@@ -33,7 +33,10 @@ const Login = (): JSX.Element => {
           <Route path="/signup" element={<SignUp />} />
         </Routes>
       </div>
-      <ButtonComponent text="Login" onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => console.log('clicked')}/>
+      <Button
+        text="Login"
+        onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => console.log('clicked')}
+      />
     </form>
   );
 };

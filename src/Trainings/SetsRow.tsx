@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import ButtonComponent from '../components/ButtonComponent';
-import InputComponent from '../components/InputComponent';
+import ButtonComponent from '../components/Button';
+import Input from '../components/Input';
 
 type SetsRowProps = {
   index: number;
@@ -20,7 +20,7 @@ const SetsRow = ({ index, handleRemoveSetClick, handleInputChange }: SetsRowProp
         paddingBottom: '10px',
       }}
     >
-      <InputComponent
+      <Input
         name="set"
         type="number"
         min="1"
@@ -28,7 +28,7 @@ const SetsRow = ({ index, handleRemoveSetClick, handleInputChange }: SetsRowProp
         handleInputChange={handleInputChange}
         index={index}
       />
-      <InputComponent
+      <Input
         name="reps"
         type="number"
         min="1"
@@ -37,7 +37,7 @@ const SetsRow = ({ index, handleRemoveSetClick, handleInputChange }: SetsRowProp
         index={index}
       />
       <i className="x icon" style={{ padding: '10px 35px' }}></i>
-      <InputComponent
+      <Input
         name="weight"
         type="number"
         min="0"
