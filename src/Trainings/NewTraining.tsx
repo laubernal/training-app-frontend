@@ -73,9 +73,7 @@ const NewTraining = (): JSX.Element => {
         return (
           <div key={index}>
             <SetsRow
-              row={set}
               index={index}
-              handleAddSetClick={handleAddSetClick}
               handleRemoveSetClick={handleRemoveSetClick}
               handleInputChange={handleInputChange}
             />

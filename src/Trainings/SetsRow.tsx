@@ -3,7 +3,13 @@ import * as React from 'react';
 import ButtonComponent from '../components/ButtonComponent';
 import InputComponent from '../components/InputComponent';
 
-const SetsRow = ({ row, index, handleRemoveSetClick, handleInputChange }: any): JSX.Element => {
+type SetsRowProps = {
+  index: number;
+  handleRemoveSetClick: Function;
+  handleInputChange: Function;
+};
+
+const SetsRow = ({ index, handleRemoveSetClick, handleInputChange }: SetsRowProps): JSX.Element => {
   return (
     <div
       className="inline"
