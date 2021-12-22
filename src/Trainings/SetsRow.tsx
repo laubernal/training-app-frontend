@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import ButtonComponent from '../components/Button';
+import Button from '../components/Button';
 import Input from '../components/Input';
 
 type SetsRowProps = {
@@ -46,7 +46,7 @@ const SetsRow = ({ index, handleRemoveSetClick, handleInputChange }: SetsRowProp
         index={index}
       />
 
-      <ButtonComponent
+      <Button
         text="Remove"
         onClick={() => {
           handleRemoveSetClick(index);

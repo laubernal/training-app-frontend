@@ -12,8 +12,20 @@ type setRowType = { set: string; reps: string; weight: string };
 
 const setRow: setRowType = { set: '', reps: '', weight: '' };
 
+const options = [
+  {
+    label: 'Chest',
+    value: 'chest',
+  },
+  {
+    label: 'Legs',
+    value: 'legs',
+  },
+];
+
 const NewTraining = (): JSX.Element => {
   const [setList, setAddSet] = useState([setRow]);
+  const [selected, setSelected] = useState(options[0]);
 
   const handleAddSetClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
     e.preventDefault();
@@ -51,11 +63,21 @@ const NewTraining = (): JSX.Element => {
         </div>
       </div>
       <br />
-      <div className=" field required">
+      <div className="field required">
+        <Dropdown
+          options={options}
+          label="Select a category"
+          selected={selected}
+          onSelectedChange={setSelected}
+        />
+      </div>
+      <div className="field required">
         <label>Exercise name</label>
-        <div className="ui input inline">
+        <div
+          className="ui input inline"
+          style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '10px' }}
+        >
           <Input type="text" placeholder="Exercise name" />
-          <Dropdown />
         </div>
       </div>
       <div
