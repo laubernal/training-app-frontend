@@ -19,7 +19,6 @@ const SetsRow = ({ row, index, handleRemoveSetClick, handleInputChange }: any): 
         type="number"
         min="1"
         placeholder="Set"
-        value={row.set}
         handleInputChange={handleInputChange}
         index={index}
       />
@@ -28,7 +27,6 @@ const SetsRow = ({ row, index, handleRemoveSetClick, handleInputChange }: any): 
         type="number"
         min="1"
         placeholder="Reps"
-        value={row.reps}
         handleInputChange={handleInputChange}
         index={index}
       />
@@ -38,7 +36,6 @@ const SetsRow = ({ row, index, handleRemoveSetClick, handleInputChange }: any): 
         type="number"
         min="0"
         placeholder="Weight (Kg)"
-        value={row.weight}
         handleInputChange={handleInputChange}
         index={index}
       />

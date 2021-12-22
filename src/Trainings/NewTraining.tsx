@@ -29,7 +29,6 @@ const NewTraining = (): JSX.Element => {
 
   const handleInputChange = (e: any, index: number) => {
     const { name, value } = e.target;
-    console.log('index', index);
     const sets: { [key: string]: string }[] = [...setList];
     sets[index][name] = value;
     setAddSet(sets as setRowType[]);

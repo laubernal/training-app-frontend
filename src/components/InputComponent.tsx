@@ -5,7 +5,6 @@ type InputProps = {
   type: string;
   min?: string;
   placeholder?: string;
-  value?: number;
   handleInputChange?: Function;
   index?: number;
 };
@@ -15,7 +14,6 @@ const InputComponent = ({
   type,
   min,
   placeholder,
-  value,
   handleInputChange,
   index,
 }: InputProps) => {
@@ -26,10 +24,9 @@ const InputComponent = ({
       type={type}
       min={min}
       placeholder={placeholder}
-      value={value}
       onChange={e => {
         if (handleInputChange) {
-          console.log('input value', e.target.value);
+          console.log(`input ${name} of row ${index} changed to ${e.target.value}`);
           handleInputChange(e, index);
         }
       }}
