@@ -15,7 +15,7 @@ const Dropdown = ({ options, label, selected, onSelectedChange }: dropdownProps)
 
   useEffect(() => {
     const onBodyClick = (event: any) => {
-      if (ref.current.contains(event.target)) {
+      if (ref.current && ref.current.contains(event.target)) {
         return;
       }
 
