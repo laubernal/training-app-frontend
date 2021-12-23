@@ -21,6 +21,10 @@ const options = [
     label: 'Legs',
     value: 'legs',
   },
+  {
+    label: 'Arms',
+    value: 'arms',
+  },
 ];
 
 const NewTraining = (): JSX.Element => {

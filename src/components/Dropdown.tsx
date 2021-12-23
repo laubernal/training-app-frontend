@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-const { useState } = React;
+const { useState, useEffect, useRef } = React;
 
 type dropdownProps = {
-  options: {}[];
+  options: { label: string; value: string }[];
   label: string;
   selected: { label: string; value: string };
   onSelectedChange: Function;
@@ -11,12 +11,25 @@ type dropdownProps = {
 
 const Dropdown = ({ options, label, selected, onSelectedChange }: dropdownProps) => {
   const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null!);
+
+  useEffect(() => {
+    const onBodyClick = (event: any) => {
+      if (ref.current.contains(event.target)) {
+        return;
+      }
+
+      setOpen(false);
+    };
+
+    document.addEventListener('click', onBodyClick);
+
+    return () => {
+      document.removeEventListener('click', onBodyClick);
+    };
+  }, []);
 
   const renderedOptions = options.map((option: { [key: string]: string }) => {
-    if (option.value === selected.value) {
-      return null;
-    }
-
     return (
       <div key={option.value} className="item" onClick={() => onSelectedChange(option)}>
         {option.label}
@@ -25,18 +38,16 @@ const Dropdown = ({ options, label, selected, onSelectedChange }: dropdownProps)
   });
 
   return (
-    <div className="ui form">
+    <div ref={ref} className="ui form">
       <div className="field">
         <label className="label">{label}</label>
-        <div className={`ui selection dropdown`} onClick={() => setOpen(!open)}>
-          {/* <div className={`ui selection dropdown visible active`}> */}
+        <div
+          className={`ui selection dropdown ${open ? 'visible active' : ''}`}
+          onClick={() => setOpen(!open)}
+        >
           <i className="dropdown icon"></i>
-          <div className="text">
-            <div className="menu transition">
-              {/* <div className="menu visible transition"> */}
-              {renderedOptions}
-            </div>
-          </div>
+          <div className="text">{selected.label}</div>
+          <div className={`menu  ${open ? 'visible transition' : ''}`}>{renderedOptions}</div>
         </div>
       </div>
     </div>
