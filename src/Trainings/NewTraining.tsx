@@ -18,6 +18,10 @@ const options = [
     value: 'chest',
   },
   {
+    label: 'Back',
+    value: 'back',
+  },
+  {
     label: 'Legs',
     value: 'legs',
   },
@@ -25,11 +29,15 @@ const options = [
     label: 'Arms',
     value: 'arms',
   },
+  {
+    label: 'Abs',
+    value: 'abs',
+  },
 ];
 
 const NewTraining = (): JSX.Element => {
   const [setList, setAddSet] = useState([setRow]);
-  const [selected, setSelected] = useState(options[0]);
+  const [selected, setSelected] = useState({ label: 'Select a category', value: 'default' });
 
   const handleAddSetClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
     e.preventDefault();
