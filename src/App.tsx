@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import { Login, SignUp } from './Auth/index';
+import { SignIn, SignUp } from './Auth/index';
 import { TopNavBar } from './components/index';
 import './App.css';
 import { Home } from './Home/Home';
@@ -16,7 +16,7 @@ export const App = () => {
 
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login/*" element={<Login />} />
+          <Route path="/signin/*" element={<SignIn />} />
           <Route path="/signup/*" element={<SignUp />} />
           <Route path="/new/*" element={<NewTraining />} />
         </Routes>

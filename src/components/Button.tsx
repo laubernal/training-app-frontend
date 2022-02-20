@@ -23,5 +23,3 @@ export const Button = ({ text, onClick }: ButtonProps): JSX.Element => {
     </div>
   );
 };
-
-// export default Button;

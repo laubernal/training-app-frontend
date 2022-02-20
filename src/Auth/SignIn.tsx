@@ -5,10 +5,10 @@ import { Button, SectionTitle } from '../components/index';
 import { SignUp } from './index';
 import './Auth.css';
 
-export const Login = (): JSX.Element => {
+export const SignIn = (): JSX.Element => {
   return (
     <form className="ui form login">
-      <SectionTitle text="Login" /> <br />
+      <SectionTitle text="Sign in" /> <br />
       <div className="field required">
         <label>Email</label>
         <div className="ui left icon input">
@@ -33,7 +33,7 @@ export const Login = (): JSX.Element => {
         </Routes>
       </div>
       <Button
-        text="Login"
+        text="Sign in"
         onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => console.log('clicked')}
       />
     </form>

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link, Routes, Route } from 'react-router-dom';
 
 import { Button, SectionTitle } from '../components/index';
-import { Login } from './index';
+import { SignIn } from './index';
 import './Auth.css';
 
 const { useState } = React;
@@ -66,11 +66,11 @@ export const SignUp = (): JSX.Element => {
       </div>
       <div>
         <p>
-          Already have an account? <Link to="/login">Login!</Link>
+          Already have an account? <Link to="/signin">Sign in!</Link>
         </p>{' '}
         <br />
         <Routes>
-          <Route path="/login" element={<Login />} />
+          <Route path="/signin" element={<SignIn />} />
         </Routes>
       </div>
       <Button

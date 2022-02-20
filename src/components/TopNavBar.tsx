@@ -16,8 +16,8 @@ export const TopNavBar = (): JSX.Element => {
         <Link className="item" to="/signup">
           Sign up
         </Link>
-        <Link className="item" to="/login">
-          Login
+        <Link className="item" to="/signin">
+          Sign in
         </Link>
       </div>
     </div>
