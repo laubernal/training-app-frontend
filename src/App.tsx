@@ -2,14 +2,13 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import Login from './Auth/Login';
-import SignUp from './Auth/SignUp';
-import TopNavBar from './components/TopNavBar';
+import { Login, SignUp } from './Auth/index';
+import { TopNavBar } from './components/index';
 import './App.css';
-import Home from './Home/Home';
-import NewTraining from './Trainings/NewTraining';
+import { Home } from './Home/Home';
+import { NewTraining } from './Trainings/index';
 
-const App = () => {
+export const App = () => {
   return (
     <Router>
       <div className="auth">
@@ -27,5 +26,3 @@ const App = () => {
 };
 
 ReactDOM.render(<App />, document.querySelector('#root'));
-
-export default App;

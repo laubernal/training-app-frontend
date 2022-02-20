@@ -1,14 +1,10 @@
 import * as React from 'react';
 
-import Button from '../components/Button';
-import Dropdown from '../components/Dropdown';
-import Input from '../components/Input';
-import SectionTitle from '../components/SectionTitle';
-import SetsRow from './SetsRow';
+import { Button, Dropdown, Input, SectionTitle } from '../components/index';
+import { setRowType } from '../types';
+import { SetsRow } from './index';
 
 const { useState } = React;
-
-type setRowType = { set: string; reps: string; weight: string };
 
 const setRow: setRowType = { set: '', reps: '', weight: '' };
 
@@ -35,7 +31,7 @@ const options = [
   },
 ];
 
-const NewTraining = (): JSX.Element => {
+export const NewTraining = (): JSX.Element => {
   const [setList, setAddSet] = useState([setRow]);
   const [selected, setSelected] = useState({ label: 'Select a category', value: 'default' });
 
@@ -142,5 +138,3 @@ const NewTraining = (): JSX.Element => {
     </div>
   );
 };
-
-export default NewTraining;

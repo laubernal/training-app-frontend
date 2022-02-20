@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { Link, Routes, Route } from 'react-router-dom';
 
-import Button from '../components/Button';
-import SectionTitle from '../components/SectionTitle';
-import SignUp from './SignUp';
+import { Button, SectionTitle } from '../components/index';
+import { SignUp } from './index';
 import './Auth.css';
 
-const Login = (): JSX.Element => {
+export const Login = (): JSX.Element => {
   return (
     <form className="ui form login">
       <SectionTitle text="Login" /> <br />
@@ -40,5 +39,3 @@ const Login = (): JSX.Element => {
     </form>
   );
 };
-
-export default Login;

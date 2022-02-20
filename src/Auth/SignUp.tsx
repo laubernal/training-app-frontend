@@ -1,14 +1,13 @@
 import * as React from 'react';
 import { Link, Routes, Route } from 'react-router-dom';
 
-import Button from '../components/Button';
-import SectionTitle from '../components/SectionTitle';
-import Login from './Login';
+import { Button, SectionTitle } from '../components/index';
+import { Login } from './index';
 import './Auth.css';
 
 const { useState } = React;
 
-const SignUp = (): JSX.Element => {
+export const SignUp = (): JSX.Element => {
   const [name, setName] = useState('');
   const [showPasswordAlert, setShowPasswordAlert] = useState(false);
 
@@ -81,5 +80,3 @@ const SignUp = (): JSX.Element => {
     </form>
   );
 };
-
-export default SignUp;

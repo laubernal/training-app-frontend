@@ -1,15 +1,9 @@
 import * as React from 'react';
+import { dropdownProps } from '../types';
 
 const { useState, useEffect, useRef } = React;
 
-type dropdownProps = {
-  options: { label: string; value: string }[];
-  label: string;
-  selected: { label: string; value: string };
-  onSelectedChange: Function;
-};
-
-const Dropdown = ({ options, label, selected, onSelectedChange }: dropdownProps) => {
+export const Dropdown = ({ options, label, selected, onSelectedChange }: dropdownProps) => {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null!);
 
@@ -55,5 +49,3 @@ const Dropdown = ({ options, label, selected, onSelectedChange }: dropdownProps)
     </div>
   );
 };
-
-export default Dropdown;

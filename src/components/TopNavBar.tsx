@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import SectionTitle from './SectionTitle';
+import { SectionTitle } from './index';
 
-const TopNavBar = (): JSX.Element => {
+export const TopNavBar = (): JSX.Element => {
   return (
     <div className="ui menu">
       <Link className="ui header" to="/">
@@ -10,7 +10,9 @@ const TopNavBar = (): JSX.Element => {
       </Link>
 
       <div className="right menu">
-        <Link className="item" to="/new">New training</Link>
+        <Link className="item" to="/new">
+          New training
+        </Link>
         <Link className="item" to="/signup">
           Sign up
         </Link>
@@ -21,5 +23,3 @@ const TopNavBar = (): JSX.Element => {
     </div>
   );
 };
-
-export default TopNavBar;

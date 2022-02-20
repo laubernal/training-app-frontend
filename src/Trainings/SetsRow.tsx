@@ -1,15 +1,13 @@
 import * as React from 'react';
 
-import Button from '../components/Button';
-import Input from '../components/Input';
+import { Button, Input } from '../components/index';
+import { SetsRowProps } from '../types';
 
-type SetsRowProps = {
-  index: number;
-  handleRemoveSetClick: Function;
-  handleInputChange: Function;
-};
-
-const SetsRow = ({ index, handleRemoveSetClick, handleInputChange }: SetsRowProps): JSX.Element => {
+export const SetsRow = ({
+  index,
+  handleRemoveSetClick,
+  handleInputChange,
+}: SetsRowProps): JSX.Element => {
   return (
     <div
       className="inline"
@@ -55,5 +53,3 @@ const SetsRow = ({ index, handleRemoveSetClick, handleInputChange }: SetsRowProp
     </div>
   );
 };
-
-export default SetsRow;

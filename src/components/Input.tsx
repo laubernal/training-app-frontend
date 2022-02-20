@@ -1,22 +1,7 @@
 import * as React from 'react';
+import { InputProps } from '../types';
 
-type InputProps = {
-  name?: string;
-  type: string;
-  min?: string;
-  placeholder?: string;
-  handleInputChange?: Function;
-  index?: number;
-};
-
-const Input = ({
-  name,
-  type,
-  min,
-  placeholder,
-  handleInputChange,
-  index,
-}: InputProps) => {
+export const Input = ({ name, type, min, placeholder, handleInputChange, index }: InputProps) => {
   return (
     <input
       className="field"
@@ -32,5 +17,3 @@ const Input = ({
     />
   );
 };
-
-export default Input;

@@ -1,13 +1,9 @@
 import * as React from 'react';
+import { ButtonProps } from '../types';
 
 // const { useState } = React;
 
-type ButtonProps = {
-  text: string;
-  onClick: (e: any) => void;
-};
-
-const Button = ({ text, onClick }: ButtonProps): JSX.Element => {
+export const Button = ({ text, onClick }: ButtonProps): JSX.Element => {
   // const [count, setCount] = useState(0);
 
   // const onButtonClick = (e: React.MouseEvent<HTMLButtonElement>): void => {
@@ -28,4 +24,4 @@ const Button = ({ text, onClick }: ButtonProps): JSX.Element => {
   );
 };
 
-export default Button;
+// export default Button;
