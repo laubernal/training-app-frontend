@@ -37,7 +37,6 @@ export const NewTraining = (): JSX.Element => {
 
   const handleAddSetClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
     e.preventDefault();
-
     setAddSetList([...addSetList, { set: '', reps: '', weight: '' }]);
   };
 
@@ -103,7 +102,6 @@ export const NewTraining = (): JSX.Element => {
       {addSetList.map((set: setRowType, index: number) => {
         return (
           <div key={index}>
-            {console.log('SET', set)}
             <SetsRow
               index={index}
               set={set}

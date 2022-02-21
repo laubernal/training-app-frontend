@@ -21,7 +21,6 @@ export const Input = ({
       onChange={e => {
         if (handleInputChange) {
           handleInputChange(e, index);
-          console.log('VALUE', value);
         }
       }}
     />

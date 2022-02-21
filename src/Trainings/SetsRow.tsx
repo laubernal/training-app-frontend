@@ -19,7 +19,6 @@ export const SetsRow = ({
         paddingBottom: '10px',
       }}
     >
-      {console.log(`SET VALUE: ${JSON.stringify(set)} INDEX VALUE: ${index}`)}
       <Input
         name="set"
         type="number"
