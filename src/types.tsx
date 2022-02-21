@@ -1,6 +1,7 @@
 export type setRowType = { set: string; reps: string; weight: string };
 export type SetsRowProps = {
   index: number;
+  set: setRowType;
   handleRemoveSetClick: Function;
   handleInputChange: Function;
 };
@@ -17,6 +18,7 @@ export type InputProps = {
   type: string;
   min?: string;
   placeholder?: string;
+  value?: string;
   handleInputChange?: Function;
   index?: number;
 };

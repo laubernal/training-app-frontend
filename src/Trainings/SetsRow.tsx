@@ -5,6 +5,7 @@ import { SetsRowProps } from '../types';
 
 export const SetsRow = ({
   index,
+  set,
   handleRemoveSetClick,
   handleInputChange,
 }: SetsRowProps): JSX.Element => {
@@ -18,11 +19,13 @@ export const SetsRow = ({
         paddingBottom: '10px',
       }}
     >
+      {console.log(`SET VALUE: ${JSON.stringify(set)} INDEX VALUE: ${index}`)}
       <Input
         name="set"
         type="number"
         min="1"
         placeholder="Set"
+        value={set.set}
         handleInputChange={handleInputChange}
         index={index}
       />
@@ -31,6 +34,7 @@ export const SetsRow = ({
         type="number"
         min="1"
         placeholder="Reps"
+        value={set.reps}
         handleInputChange={handleInputChange}
         index={index}
       />
@@ -40,10 +44,10 @@ export const SetsRow = ({
         type="number"
         min="0"
         placeholder="Weight (Kg)"
+        value={set.weight}
         handleInputChange={handleInputChange}
         index={index}
       />
-
       <Button
         text="Remove"
         onClick={() => {

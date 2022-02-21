@@ -6,7 +6,7 @@ import { SetsRow } from './index';
 
 const { useState } = React;
 
-const setRow: setRowType = { set: '', reps: '', weight: '' };
+// const setRow: setRowType = { set: '', reps: '', weight: '' };
 
 const options = [
   {
@@ -32,25 +32,26 @@ const options = [
 ];
 
 export const NewTraining = (): JSX.Element => {
-  const [setList, setAddSet] = useState([setRow]);
+  const [addSetList, setAddSetList] = useState([{ set: '', reps: '', weight: '' }]);
   const [selected, setSelected] = useState({ label: 'Select a category', value: 'default' });
 
   const handleAddSetClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
     e.preventDefault();
-    setAddSet([...setList, setRow]);
+
+    setAddSetList([...addSetList, { set: '', reps: '', weight: '' }]);
   };
 
   const handleRemoveSetClick = (index: number): void => {
-    const set = [...setList];
+    const set = [...addSetList];
     set.splice(index, 1);
-    setAddSet(set);
+    setAddSetList(set);
   };
 
   const handleInputChange = (e: any, index: number) => {
     const { name, value } = e.target;
-    const sets: { [key: string]: string }[] = [...setList];
+    const sets: { [key: string]: string }[] = [...addSetList];
     sets[index][name] = value;
-    setAddSet(sets as setRowType[]);
+    setAddSetList(sets as setRowType[]);
   };
 
   return (
@@ -99,17 +100,20 @@ export const NewTraining = (): JSX.Element => {
         <h4 className="ui field dividing header required">Reps</h4>
         <h4 className="ui field dividing header required">Weight (Kg)</h4>
       </div>
-      {setList.map((set, index) => {
+      {addSetList.map((set: setRowType, index: number) => {
         return (
           <div key={index}>
+            {console.log('SET', set)}
             <SetsRow
               index={index}
+              set={set}
               handleRemoveSetClick={handleRemoveSetClick}
               handleInputChange={handleInputChange}
             />
           </div>
         );
       })}
+      <div style={{ marginTop: 20 }}>{JSON.stringify(addSetList)}</div>
       <div className="inline fields" style={{ justifyContent: 'space-evenly' }}>
         <Button text="Add set" onClick={handleAddSetClick} />
 
