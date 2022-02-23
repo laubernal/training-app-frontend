@@ -11,20 +11,9 @@ export const SignIn = (): JSX.Element => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleInputChange = (e: any) => {
-    const { name, value } = e.target;
-
-    if (name === 'email') {
-      setEmail(value);
-    } else if (name === 'password') {
-      setPassword(value);
-    }
-  };
-
   const signIn = async () => {
-    await axios.post('/signin', { email, password }).then(response => {
-      console.log('response data', response.data);
-    });
+    const response = await axios.post('/signin', { email, password });
+    console.log(response);
   };
 
   return (
@@ -38,7 +27,9 @@ export const SignIn = (): JSX.Element => {
             type="text"
             placeholder="Enter your email"
             value={email}
-            handleInputChange={handleInputChange}
+            handleInputChange={(e: any) => {
+              setEmail(e.target.value);
+            }}
           />
           {/* <input autoFocus type="text" placeholder="Enter your email" /> */}
           <i className="at icon"></i>
@@ -52,7 +43,9 @@ export const SignIn = (): JSX.Element => {
             type="password"
             placeholder="Enter your password"
             value={password}
-            handleInputChange={handleInputChange}
+            handleInputChange={(e: any) => {
+              setPassword(e.target.value);
+            }}
           />
           {/* <input type="password" placeholder="Enter your password" /> */}
           <i className="lock icon"></i>
@@ -69,9 +62,8 @@ export const SignIn = (): JSX.Element => {
       </div>
       <Button
         text="Sign in"
-        onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-          console.log('clicked');
-          signIn();
+        onClick={async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+          await signIn();
         }}
       />
     </form>
