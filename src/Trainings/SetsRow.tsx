@@ -1,7 +1,14 @@
 import * as React from 'react';
 
 import { Button, Input } from '../components/index';
-import { SetsRowProps } from '../types';
+import { setRowType } from '../types';
+
+type SetsRowProps = {
+  index: number;
+  set: setRowType;
+  handleRemoveSetClick: Function;
+  handleInputChange: Function;
+};
 
 export const SetsRow = ({
   index,
@@ -49,6 +56,7 @@ export const SetsRow = ({
       />
       <Button
         text="Remove"
+        type="button"
         onClick={() => {
           handleRemoveSetClick(index);
         }}

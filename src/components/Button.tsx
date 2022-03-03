@@ -1,9 +1,14 @@
 import * as React from 'react';
-import { ButtonProps } from '../types';
 
 // const { useState } = React;
 
-export const  Button = ({ text, onClick }: ButtonProps): JSX.Element => {
+type ButtonProps = {
+  text: string;
+  type: 'button' | 'submit' | 'reset';
+  onClick?: (e: any) => void;
+};
+
+export const Button = ({ text, type, onClick }: ButtonProps): JSX.Element => {
   // const [count, setCount] = useState(0);
 
   // const onButtonClick = (e: React.MouseEvent<HTMLButtonElement>): void => {
@@ -15,7 +20,12 @@ export const  Button = ({ text, onClick }: ButtonProps): JSX.Element => {
     <div className="buttonLayout">
       <button
         className="ui button"
-        onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => onClick(e)}
+        type={type}
+        onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+          if (onClick) {
+            onClick(e);
+          }
+        }}
       >
         {text}
       </button>

@@ -113,10 +113,11 @@ export const NewTraining = (): JSX.Element => {
       })}
       <div style={{ marginTop: 20 }}>{JSON.stringify(addSetList)}</div>
       <div className="inline fields" style={{ justifyContent: 'space-evenly' }}>
-        <Button text="Add set" onClick={handleAddSetClick} />
+        <Button text="Add set" type="button" onClick={handleAddSetClick} />
 
         <Button
           text="Submit exercise"
+          type="button"
           onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
             console.log('clicked submit exercise')
           }
@@ -125,6 +126,7 @@ export const NewTraining = (): JSX.Element => {
       <div className="inline fields" style={{ justifyContent: 'space-evenly' }}>
         <Button
           text="Add exercise"
+          type="button"
           onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
             console.log('clicked add exercise')
           }
@@ -132,6 +134,7 @@ export const NewTraining = (): JSX.Element => {
 
         <Button
           text="Submit training"
+          type="button"
           onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
             console.log('clicked submit training')
           }

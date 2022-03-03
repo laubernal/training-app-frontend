@@ -75,6 +75,7 @@ export const SignUp = (): JSX.Element => {
       </div>
       <Button
         text="Sign up"
+        type="submit"
         onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => console.log('clicked')}
       />
     </form>

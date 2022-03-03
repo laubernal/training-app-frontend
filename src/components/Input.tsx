@@ -1,5 +1,14 @@
 import * as React from 'react';
-import { InputProps } from '../types';
+
+type InputProps = {
+  name?: string;
+  type: string;
+  min?: string;
+  placeholder?: string;
+  value?: string;
+  handleInputChange?: Function;
+  index?: number;
+};
 
 export const Input = ({
   name,

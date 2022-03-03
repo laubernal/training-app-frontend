@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { SectionTitle } from './index';
 
-export const TopNavBar = (): JSX.Element => {
+export const Header = (): JSX.Element => {
   return (
     <div className="ui menu">
       <Link className="ui header" to="/">
@@ -10,7 +10,7 @@ export const TopNavBar = (): JSX.Element => {
       </Link>
 
       <div className="right menu">
-        <Link className="item" to="/new">
+        <Link className="item" to="/trainings/new">
           New training
         </Link>
         <Link className="item" to="/signup">

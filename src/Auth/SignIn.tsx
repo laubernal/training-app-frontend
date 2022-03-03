@@ -11,13 +11,14 @@ export const SignIn = (): JSX.Element => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const signIn = async () => {
+  const signIn = async (e: any) => {
+    e.preventDefault();
     const response = await axios.post('/signin', { email, password });
-    console.log(response);
+    console.log(response.data);
   };
 
   return (
-    <form className="ui form login">
+    <form className="ui form login" onSubmit={signIn}>
       <SectionTitle text="Sign in" /> <br />
       <div className="field required">
         <label>Email</label>
@@ -47,7 +48,6 @@ export const SignIn = (): JSX.Element => {
               setPassword(e.target.value);
             }}
           />
-          {/* <input type="password" placeholder="Enter your password" /> */}
           <i className="lock icon"></i>
         </div>
       </div>
@@ -60,12 +60,7 @@ export const SignIn = (): JSX.Element => {
           <Route path="/signup" element={<SignUp />} />
         </Routes>
       </div>
-      <Button
-        text="Sign in"
-        onClick={async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-          await signIn();
-        }}
-      />
+      <Button text="Sign in" type="submit" />
     </form>
   );
 };
