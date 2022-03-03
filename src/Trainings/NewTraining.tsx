@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { AuthStatus } from '../Auth/AuthStatus';
 
 import { Button, Dropdown, Input, SectionTitle } from '../components/index';
 import { setRowType } from '../types';
@@ -35,8 +36,8 @@ export const NewTraining = (): JSX.Element => {
   const [addSetList, setAddSetList] = useState([{ set: '', reps: '', weight: '' }]);
   const [selected, setSelected] = useState({ label: 'Select a category', value: 'default' });
 
-  const handleAddSetClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
-    e.preventDefault();
+  const handleAddSetClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
+    event.preventDefault();
     setAddSetList([...addSetList, { set: '', reps: '', weight: '' }]);
   };
 
@@ -46,8 +47,8 @@ export const NewTraining = (): JSX.Element => {
     setAddSetList(set);
   };
 
-  const handleInputChange = (e: any, index: number) => {
-    const { name, value } = e.target;
+  const handleInputChange = (event: any, index: number) => {
+    const { name, value } = event.target;
     const sets: { [key: string]: string }[] = [...addSetList];
     sets[index][name] = value;
     setAddSetList(sets as setRowType[]);
@@ -55,6 +56,7 @@ export const NewTraining = (): JSX.Element => {
 
   return (
     <div className="ui form login">
+      <AuthStatus />
       <SectionTitle text="New training" /> <br />
       <div className="inline fields">
         <div className="field required">
@@ -111,14 +113,13 @@ export const NewTraining = (): JSX.Element => {
           </div>
         );
       })}
-      <div style={{ marginTop: 20 }}>{JSON.stringify(addSetList)}</div>
       <div className="inline fields" style={{ justifyContent: 'space-evenly' }}>
         <Button text="Add set" type="button" onClick={handleAddSetClick} />
 
         <Button
           text="Submit exercise"
           type="button"
-          onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
+          onClick={(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
             console.log('clicked submit exercise')
           }
         />
@@ -127,7 +128,7 @@ export const NewTraining = (): JSX.Element => {
         <Button
           text="Add exercise"
           type="button"
-          onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
+          onClick={(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
             console.log('clicked add exercise')
           }
         />
@@ -135,7 +136,7 @@ export const NewTraining = (): JSX.Element => {
         <Button
           text="Submit training"
           type="button"
-          onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
+          onClick={(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
             console.log('clicked submit training')
           }
         />

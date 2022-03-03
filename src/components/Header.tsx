@@ -19,6 +19,9 @@ export const Header = (): JSX.Element => {
         <Link className="item" to="/signin">
           Sign in
         </Link>
+        <Link className="item" to="/signout">
+          Sign out
+        </Link>
       </div>
     </div>
   );

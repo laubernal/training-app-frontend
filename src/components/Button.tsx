@@ -5,14 +5,14 @@ import * as React from 'react';
 type ButtonProps = {
   text: string;
   type: 'button' | 'submit' | 'reset';
-  onClick?: (e: any) => void;
+  onClick?: (event: any) => void;
 };
 
 export const Button = ({ text, type, onClick }: ButtonProps): JSX.Element => {
   // const [count, setCount] = useState(0);
 
-  // const onButtonClick = (e: React.MouseEvent<HTMLButtonElement>): void => {
-  //   e.preventDefault();
+  // const onButtonClick = (event: React.MouseEvent<HTMLButtonElement>): void => {
+  //   event.preventDefault();
   //   setCount(count + 1);
   // };
 
@@ -21,9 +21,9 @@ export const Button = ({ text, type, onClick }: ButtonProps): JSX.Element => {
       <button
         className="ui button"
         type={type}
-        onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        onClick={(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
           if (onClick) {
-            onClick(e);
+            onClick(event);
           }
         }}
       >

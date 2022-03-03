@@ -11,8 +11,8 @@ export const SignUp = (): JSX.Element => {
   const [name, setName] = useState('');
   const [showPasswordAlert, setShowPasswordAlert] = useState(false);
 
-  const onInputClick = (e: React.MouseEvent<HTMLInputElement, MouseEvent>): void => {
-    e.preventDefault();
+  const onInputClick = (event: React.MouseEvent<HTMLInputElement, MouseEvent>): void => {
+    event.preventDefault();
     showPasswordAlert ? setShowPasswordAlert(false) : setShowPasswordAlert(true);
   };
 
@@ -26,8 +26,8 @@ export const SignUp = (): JSX.Element => {
             autoFocus
             type="text"
             placeholder="Enter your name"
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              setName(e.target.value);
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+              setName(event.target.value);
               console.log(name);
             }}
           />
@@ -47,7 +47,7 @@ export const SignUp = (): JSX.Element => {
           <input
             type="password"
             placeholder="Enter your password"
-            onClick={(e: React.MouseEvent<HTMLInputElement, MouseEvent>) => onInputClick(e)}
+            onClick={(event: React.MouseEvent<HTMLInputElement, MouseEvent>) => onInputClick(event)}
           />
           <i className="lock icon"></i>
         </div>
@@ -76,7 +76,7 @@ export const SignUp = (): JSX.Element => {
       <Button
         text="Sign up"
         type="submit"
-        onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => console.log('clicked')}
+        onClick={(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => console.log('clicked')}
       />
     </form>
   );

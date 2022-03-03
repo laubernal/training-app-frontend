@@ -1,24 +1,34 @@
 import * as React from 'react';
-import { Link, Routes, Route } from 'react-router-dom';
+import { Link, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 
 import { Button, SectionTitle, Input } from '../components/index';
 import { SignUp } from './index';
+import { useAuth } from './useAuth';
 import './Auth.css';
-import axios from 'axios';
 
 export const SignIn = (): JSX.Element => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const signIn = async (e: any) => {
-    e.preventDefault();
-    const response = await axios.post('/signin', { email, password });
-    console.log(response.data);
+  let navigate = useNavigate();
+  let location = useLocation();
+  let auth = useAuth();
+
+  let from = location.state?.from?.pathname || '/';
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    try {
+      event.preventDefault();
+      const response = await auth.signin(email, password, () => navigate(from, { replace: true }));
+      console.log('RESPONSE', response);
+    } catch (error: any) {
+      console.log(error.message);
+    }
   };
 
   return (
-    <form className="ui form login" onSubmit={signIn}>
+    <form className="ui form login" onSubmit={handleSubmit}>
       <SectionTitle text="Sign in" /> <br />
       <div className="field required">
         <label>Email</label>
@@ -28,8 +38,8 @@ export const SignIn = (): JSX.Element => {
             type="text"
             placeholder="Enter your email"
             value={email}
-            handleInputChange={(e: any) => {
-              setEmail(e.target.value);
+            handleInputChange={(event: any) => {
+              setEmail(event.target.value);
             }}
           />
           {/* <input autoFocus type="text" placeholder="Enter your email" /> */}
@@ -44,8 +54,8 @@ export const SignIn = (): JSX.Element => {
             type="password"
             placeholder="Enter your password"
             value={password}
-            handleInputChange={(e: any) => {
-              setPassword(e.target.value);
+            handleInputChange={(event: any) => {
+              setPassword(event.target.value);
             }}
           />
           <i className="lock icon"></i>
