@@ -12,6 +12,8 @@ import { AuthProvider } from './Auth/AuthProvider';
 import { SignOut } from './Auth/SignOut';
 
 export const App = () => {
+  
+
   return (
     <BrowserRouter>
       <div className="auth">

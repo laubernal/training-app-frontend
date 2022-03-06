@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-type userType = { email: string; password: string };
+type signInUserType = { email: string; password: string };
 
 interface AuthContextType {
-  user: userType;
+  user: signInUserType;
   signin: (email: string, password: string, callback: VoidFunction) => any;
   // signup = (
   //     firstName: string,

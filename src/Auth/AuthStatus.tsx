@@ -7,5 +7,5 @@ export const AuthStatus = () => {
     return <p>You are not logged in </p>;
   }
 
-  return <p>Hi</p>;
+  return <p>YOU ARE LOGGED IN!</p>;
 };

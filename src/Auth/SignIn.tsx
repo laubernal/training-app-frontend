@@ -11,17 +11,17 @@ export const SignIn = (): JSX.Element => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  let navigate = useNavigate();
-  let location = useLocation();
-  let auth = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const auth = useAuth();
 
-  let from = location.state?.from?.pathname || '/';
+  const from = location.state?.from?.pathname || '/';
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     try {
       event.preventDefault();
       const response = await auth.signin(email, password, () => navigate(from, { replace: true }));
-      console.log('RESPONSE', response);
+      console.log('RESPONSE', response.data);
     } catch (error: any) {
       console.log(error.message);
     }
