@@ -20,8 +20,8 @@ export const SignIn = (): JSX.Element => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     try {
       event.preventDefault();
-      const response = await auth.signin(email, password, () => navigate(from, { replace: true }));
-      console.log('RESPONSE', response.data);
+      console.log('from', from);
+      await auth.signin(email, password, () => navigate(from, { replace: true }));
     } catch (error: any) {
       console.log(error.message);
     }

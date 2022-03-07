@@ -1,9 +1,9 @@
 import { useAuth } from './useAuth';
 
 export const AuthStatus = () => {
-  let auth = useAuth();
+  const auth = useAuth();
 
-  if (!auth.user) {
+  if (!auth.token) {
     return <p>You are not logged in </p>;
   }
 

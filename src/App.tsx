@@ -8,7 +8,7 @@ import { Home } from './Home/Home';
 import { NewTraining } from './Trainings/index';
 import './App.css';
 import { RequireAuth } from './Auth/RequireAuth';
-import { AuthProvider } from './Auth/AuthProvider';
+import { AuthProvider } from './Context/AuthProvider';
 import { SignOut } from './Auth/SignOut';
 
 export const App = () => {
