@@ -8,7 +8,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const signin = async (email: string, password: string, callback: VoidFunction): Promise<void> => {
     const response = await axios.post('/signin', { email, password });
-    console.log('RESPONSE', response);
 
     setToken(response.data.userJwt);
 
@@ -22,7 +21,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     password: string,
     passwordConfirmation: string,
     callback: VoidFunction
-  ): Promise<any> => {
+  ): Promise<void> => {
     const response = await axios.post('signup', {
       firstName,
       lastName,
@@ -30,8 +29,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       password,
       passwordConfirmation,
     });
+    console.log('RESPONSE DATA', response.data);
+
+    setToken(response.data.userJwt);
+
     callback();
-    return response;
   };
 
   const signout = async (callback: VoidFunction) => {

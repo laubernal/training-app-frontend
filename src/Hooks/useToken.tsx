@@ -7,7 +7,7 @@ export const useToken = () => {
     console.log('Token string', tokenString);
 
     if (tokenString) {
-      const userToken = JSON.parse(tokenString);
+      const userToken = tokenString;
       return userToken;
     }
   };
@@ -15,7 +15,7 @@ export const useToken = () => {
   const [token, setToken] = useState(getToken());
 
   const saveToken = (userToken: any): void => {
-    localStorage.setItem('token', JSON.stringify(userToken));
+    localStorage.setItem('token', userToken);
     setToken(userToken);
   };
 
