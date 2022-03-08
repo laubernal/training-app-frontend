@@ -1,13 +1,15 @@
+import axios from 'axios';
 import * as React from 'react';
+import { useState } from 'react';
+
 import { AuthStatus } from '../Auth/AuthStatus';
 
 import { Button, Dropdown, Input, SectionTitle } from '../components/index';
 import { setRowType } from '../types';
 import { SetsRow } from './index';
 
-const { useState } = React;
-
 // const setRow: setRowType = { set: '', reps: '', weight: '' };
+type categoriesType = { _id: string; _categoryName: string };
 
 const options = [
   {
@@ -35,6 +37,7 @@ const options = [
 export const NewTraining = (): JSX.Element => {
   const [addSetList, setAddSetList] = useState([{ set: '', reps: '', weight: '' }]);
   const [selected, setSelected] = useState({ label: 'Select a category', value: 'default' });
+  // const [category, setCategory] = useState([]);
 
   const handleAddSetClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
     event.preventDefault();
@@ -53,6 +56,17 @@ export const NewTraining = (): JSX.Element => {
     sets[index][name] = value;
     setAddSetList(sets as setRowType[]);
   };
+
+  // const getCategories = async (): Promise<void> => {
+  //   try {
+  //     const response = await axios.get('/categories');
+  //     console.log('RESPONSE', response);
+
+  //     setCategory(response.data.map(({ name } ) => ({ label: name, value: name })));
+  //   } catch (error: any) {
+  //     console.log(error.message);
+  //   }
+  // };
 
   return (
     <div className="ui form login">
@@ -76,11 +90,13 @@ export const NewTraining = (): JSX.Element => {
       <div className="field required">
         <Dropdown
           options={options}
+          // options={}
           label="Select a category"
           selected={selected}
           onSelectedChange={setSelected}
         />
       </div>
+      {/* <Button text="Get categories" type="submit" onClick={handleSubmit} /> */}
       <div className="field required">
         <label>Exercise name</label>
         <div
