@@ -1,6 +1,6 @@
 import axios from 'axios';
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { AuthStatus } from '../Auth/AuthStatus';
 
@@ -11,33 +11,10 @@ import { SetsRow } from './index';
 // const setRow: setRowType = { set: '', reps: '', weight: '' };
 type categoriesType = { _id: string; _categoryName: string };
 
-const options = [
-  {
-    label: 'Chest',
-    value: 'chest',
-  },
-  {
-    label: 'Back',
-    value: 'back',
-  },
-  {
-    label: 'Legs',
-    value: 'legs',
-  },
-  {
-    label: 'Arms',
-    value: 'arms',
-  },
-  {
-    label: 'Abs',
-    value: 'abs',
-  },
-];
-
 export const NewTraining = (): JSX.Element => {
   const [addSetList, setAddSetList] = useState([{ set: '', reps: '', weight: '' }]);
   const [selected, setSelected] = useState({ label: 'Select a category', value: 'default' });
-  // const [category, setCategory] = useState([]);
+  const [category, setCategory] = useState([{ label: '', value: '' }]);
 
   const handleAddSetClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
     event.preventDefault();
@@ -57,16 +34,24 @@ export const NewTraining = (): JSX.Element => {
     setAddSetList(sets as setRowType[]);
   };
 
-  // const getCategories = async (): Promise<void> => {
-  //   try {
-  //     const response = await axios.get('/categories');
-  //     console.log('RESPONSE', response);
+  const getCategories = async (): Promise<void> => {
+    try {
+      const response = await axios.get('/categories');
 
-  //     setCategory(response.data.map(({ name } ) => ({ label: name, value: name })));
-  //   } catch (error: any) {
-  //     console.log(error.message);
-  //   }
-  // };
+      setCategory(
+        response.data.map(({ _id, _categoryName }: categoriesType) => ({
+          label: _categoryName,
+          value: _id,
+        }))
+      );
+    } catch (error: any) {
+      console.log(error.message);
+    }
+  };
+
+  useEffect(() => {
+    getCategories();
+  }, []);
 
   return (
     <div className="ui form login">
@@ -89,14 +74,13 @@ export const NewTraining = (): JSX.Element => {
       <br />
       <div className="field required">
         <Dropdown
-          options={options}
-          // options={}
+          options={category}
           label="Select a category"
           selected={selected}
           onSelectedChange={setSelected}
         />
       </div>
-      {/* <Button text="Get categories" type="submit" onClick={handleSubmit} /> */}
+      {console.log('SELECTED', selected)}
       <div className="field required">
         <label>Exercise name</label>
         <div

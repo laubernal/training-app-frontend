@@ -27,7 +27,6 @@ export const SignUp = (): JSX.Element => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     try {
       event.preventDefault();
-      console.log(firstName, lastName, email, password, passwordConfirmation);
       await auth.signup(firstName, lastName, email, password, passwordConfirmation, () =>
         navigate('/', { replace: true })
       );
