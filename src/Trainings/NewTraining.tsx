@@ -1,9 +1,12 @@
 import * as React from 'react';
 
 import { Button, Input, SectionTitle } from '../components/index';
+import { useTraining } from '../Hooks/useTraining';
 import { Exercise } from './Exercise';
 
 export const NewTraining = (): JSX.Element => {
+  const { training, setTraining } = useTraining();
+
   return (
     <div className="ui form login">
       <SectionTitle text="New training" /> <br />
@@ -14,6 +17,7 @@ export const NewTraining = (): JSX.Element => {
             <Input type="text" placeholder="Training title" />
           </div>
         </div>
+
         <div className="field required">
           <label>Date</label> <br />
           <div className="ui input">
@@ -27,7 +31,7 @@ export const NewTraining = (): JSX.Element => {
           <div key={index}>
             <Exercise
               index={index}
-              exercise={set}
+              exercise={exercise}
               handleInputChange={handleInputExerciseChange}
             />
           </div>

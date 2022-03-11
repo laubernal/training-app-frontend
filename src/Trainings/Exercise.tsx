@@ -3,10 +3,10 @@ import * as React from 'react';
 import { useState, useEffect } from 'react';
 
 import { Button, Dropdown, Input } from '../components/index';
+import { useCategories } from '../Hooks/useCategories';
+import { useTraining } from '../Hooks/useTraining';
 import { setRowType } from '../types';
 import { SetsRow } from './index';
-
-type categoriesType = { _id: string; _categoryName: string };
 
 type exerciseType = {
   category: string;
@@ -21,12 +21,19 @@ type exerciseProps = {
 };
 
 export const Exercise = ({ index, exercise, handleInputChange }: exerciseProps): JSX.Element => {
+  const { training } = useTraining();
+  
+  const { categories, setCategories } = useCategories();
+  const [categorySelected, setCategorySelected] = useState({
+    label: 'Select a category',
+    value: 'default',
+  });
+
   const [addSetList, setAddSetList] = useState([{ set: '', reps: '', weight: '' }]);
+
   const [addExerciseList, setAddExerciseList] = useState([
     { category: '', exerciseName: '', sets: [addSetList] },
   ]);
-  const [selected, setSelected] = useState({ label: 'Select a category', value: 'default' });
-  const [category, setCategory] = useState([{ label: '', value: '' }]);
 
   const handleAddSetClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
     event.preventDefault();
@@ -54,34 +61,21 @@ export const Exercise = ({ index, exercise, handleInputChange }: exerciseProps):
     ]);
   };
 
-  const getCategories = async (): Promise<void> => {
-    try {
-      const response = await axios.get('/categories');
-
-      setCategory(
-        response.data.map(({ _id, _categoryName }: categoriesType) => ({
-          label: _categoryName,
-          value: _id,
-        }))
-      );
-    } catch (error: any) {
-      console.log(error.message);
-    }
-  };
-
   useEffect(() => {
-    getCategories();
+    setCategories();
   }, []);
+
   return (
     <div className="ui form login">
       <div className="field required">
         <Dropdown
-          options={category}
+          options={categories}
           label="Select a category"
-          selected={selected}
-          onSelectedChange={setSelected}
+          selected={categorySelected}
+          onSelectedChange={setCategorySelected}
         />
       </div>
+
       <div className="field required">
         <label>Exercise name</label>
         <div
@@ -91,6 +85,7 @@ export const Exercise = ({ index, exercise, handleInputChange }: exerciseProps):
           <Input type="text" placeholder="Exercise name" />
         </div>
       </div>
+
       <div
         className="inline fields"
         style={{
@@ -102,6 +97,7 @@ export const Exercise = ({ index, exercise, handleInputChange }: exerciseProps):
         <h4 className="ui field dividing header required">Reps</h4>
         <h4 className="ui field dividing header required">Weight (Kg)</h4>
       </div>
+
       {addSetList.map((set: setRowType, index: number) => {
         return (
           <div key={index}>
@@ -114,11 +110,13 @@ export const Exercise = ({ index, exercise, handleInputChange }: exerciseProps):
           </div>
         );
       })}
+
       <div className="inline fields" style={{ justifyContent: 'space-evenly' }}>
         <Button text="Add set" type="button" onClick={handleAddSetClick} />
 
         <Button text="Add exercise" type="button" onClick={handleAddExerciseClick} />
       </div>
+
       <div className="inline fields" style={{ justifyContent: 'space-evenly' }}>
         <Button
           text="Submit exercise"
