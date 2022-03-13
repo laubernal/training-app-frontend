@@ -1,14 +1,20 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
 
 import { Button, Input, SectionTitle } from '../components/index';
+import { useCategories } from '../Hooks/useCategories';
 import { useTraining } from '../Hooks/useTraining';
 import { Exercise } from './Exercise';
 
 export const NewTraining = (): JSX.Element => {
-  const { training, setTraining } = useTraining();
+  const { training, addExercise, removeSet, addSet, saveSet } = useTraining();
+  const { categories, setCategories } = useCategories();
+
+  useEffect(() => {
+    setCategories();
+  }, []);
 
   return (
-    <div className="ui form login">
+    <form className="ui form login">
       <SectionTitle text="New training" /> <br />
       <div className="inline fields">
         <div className="field required">
@@ -26,24 +32,30 @@ export const NewTraining = (): JSX.Element => {
         </div>
       </div>
       <br />
-      {/* {addExerciseList.map((exercise: any, index: number) => {
+      {training.exercises.map((exercise: any, index: number) => {
         return (
           <div key={index}>
             <Exercise
-              index={index}
+              exerciseIndex={index}
               exercise={exercise}
-              handleInputChange={handleInputExerciseChange}
+              categories={categories}
+              addSet={addSet}
+              saveSet={saveSet}
+              removeSet={removeSet}
             />
           </div>
-        )
-      })} */}
-      <Button
-        text="Submit training"
-        type="button"
-        onClick={(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
-          console.log('clicked submit training')
-        }
-      />
-    </div>
+        );
+      })}
+      <div className="inline fields" style={{ justifyContent: 'space-evenly' }}>
+        <Button text="Add exercise" type="button" onClick={addExercise} />
+        <Button
+          text="Submit training"
+          type="submit"
+          onClick={(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
+            console.log('clicked submit training')
+          }
+        />
+      </div>
+    </form>
   );
 };

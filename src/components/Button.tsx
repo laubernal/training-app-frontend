@@ -9,13 +9,6 @@ type ButtonProps = {
 };
 
 export const Button = ({ text, type, onClick }: ButtonProps): JSX.Element => {
-  // const [count, setCount] = useState(0);
-
-  // const onButtonClick = (event: React.MouseEvent<HTMLButtonElement>): void => {
-  //   event.preventDefault();
-  //   setCount(count + 1);
-  // };
-
   return (
     <div className="buttonLayout">
       <button
@@ -29,7 +22,6 @@ export const Button = ({ text, type, onClick }: ButtonProps): JSX.Element => {
       >
         {text}
       </button>
-      {/* <h1>{`Button count: ${count}`}</h1> */}
     </div>
   );
 };
