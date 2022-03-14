@@ -80,6 +80,7 @@ export const useTraining = () => {
       exerciseName,
       sets,
     };
+    console.log('NEW EXERCISE', newExercise);
 
     newExerciseList.splice(index, 1, newExercise);
 
@@ -90,14 +91,34 @@ export const useTraining = () => {
       };
       return newState;
     });
+    console.log('TRAINING', training.exercises);
   };
 
-  // Add remove exercise function and add button in front
+  const removeExercise = (exerciseIndex: number): void => {
+    console.log('EXERCISES BEFORE', training.exercises);
+
+    console.log('EX INDEX TO REMOVE', exerciseIndex);
+
+    const newExerciseList = [...training.exercises];
+
+    newExerciseList.splice(exerciseIndex, 1);
+
+    console.log('EXERCISES AFTER', newExerciseList);
+
+    setTraining(prevState => {
+      const newState = {
+        ...prevState,
+        exercises: newExerciseList,
+      };
+      return newState;
+    });
+  };
 
   return {
     training,
     addExercise,
     saveExercise,
+    removeExercise,
     addSet,
     saveSet,
     removeSet,

@@ -14,6 +14,8 @@ type exerciseProps = {
   exerciseIndex: number;
   exercise: exerciseType;
   categories: { label: string; value: string }[];
+  saveExercise: (index: number, category: string, exerciseName: string, sets: setRowType[]) => void;
+  removeExercise: (exerciseIndex: number) => void;
   addSet: (exerciseIndex: number) => void;
   saveSet: (exerciseIndex: number, set: string, reps: string, weight: string) => void;
   removeSet: (exerciseIndex: number, setIndex: number) => void;
@@ -23,6 +25,8 @@ export const Exercise = ({
   exerciseIndex,
   exercise,
   categories,
+  saveExercise,
+  removeExercise,
   addSet,
   saveSet,
   removeSet,
@@ -98,8 +102,19 @@ export const Exercise = ({
       })}
       <div className="inline fields" style={{ justifyContent: 'space-evenly' }}>
         <Button text="Add set" type="button" onClick={() => addSet(exerciseIndex)} />
+        <Button
+          text="Remove exercise"
+          type="button"
+          onClick={() => removeExercise(exerciseIndex)}
+        />
 
-        <Button text="Submit exercise" type="submit" />
+        <Button
+          text="Submit exercise"
+          type="submit"
+          onClick={() =>
+            saveExercise(exerciseIndex, exercise.category, exercise.name, exercise.sets)
+          }
+        />
       </div>
     </div>
   );
