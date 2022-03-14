@@ -6,8 +6,8 @@ import { setRowType } from '../types';
 type SetsRowProps = {
   index: number;
   set: setRowType;
-  handleRemoveSetClick: Function;
-  handleInputChange: Function;
+  handleRemoveSetClick: (index: number) => void;
+  handleInputChange: () => void;
 };
 
 export const SetsRow = ({

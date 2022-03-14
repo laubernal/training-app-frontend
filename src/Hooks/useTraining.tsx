@@ -8,7 +8,7 @@ export const useTraining = () => {
     exercises: [{ category: '', exerciseName: '', sets: [{ set: '', reps: '', weight: '' }] }],
   });
 
-  const addSet = (exerciseIndex: number) => {
+  const addSet = (exerciseIndex: number): void => {
     const newSet = { set: '', reps: '', weight: '' };
 
     const newSetList = [...training.exercises[exerciseIndex].sets, newSet];
@@ -21,7 +21,7 @@ export const useTraining = () => {
     );
   };
 
-  const saveSet = (exerciseIndex: number, set: string, reps: string, weight: string) => {
+  const saveSet = (exerciseIndex: number, set: string, reps: string, weight: string): void => {
     const newSetList = [...training.exercises[exerciseIndex].sets];
 
     const newSet = {
@@ -40,8 +40,18 @@ export const useTraining = () => {
     );
   };
 
-  const removeSet = (setIndex: number) => {
+  const removeSet = (exerciseIndex: number, setIndex: number): void => {
     console.log('REMOVE SET CLIKED', setIndex);
+    const newSetList = [...training.exercises[exerciseIndex].sets];
+
+    newSetList.splice(setIndex, 1);
+
+    saveExercise(
+      exerciseIndex,
+      training.exercises[exerciseIndex].category,
+      training.exercises[exerciseIndex].exerciseName,
+      newSetList
+    );
   };
 
   const addExercise = () => {
@@ -81,6 +91,8 @@ export const useTraining = () => {
       return newState;
     });
   };
+
+  // Add remove exercise function and add button in front
 
   return {
     training,

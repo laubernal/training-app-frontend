@@ -27,9 +27,9 @@ export const Input = ({
       min={min}
       placeholder={placeholder}
       value={value}
-      onChange={e => {
+      onChange={event => {
         if (handleInputChange) {
-          handleInputChange(e, index);
+          handleInputChange(event, index);
         }
       }}
     />

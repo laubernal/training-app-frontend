@@ -14,10 +14,9 @@ type exerciseProps = {
   exerciseIndex: number;
   exercise: exerciseType;
   categories: { label: string; value: string }[];
-  addSet: Function;
-  saveSet: Function;
-  removeSet: Function;
-  // handleInputChange: Function;
+  addSet: (exerciseIndex: number) => void;
+  saveSet: (exerciseIndex: number, set: string, reps: string, weight: string) => void;
+  removeSet: (exerciseIndex: number, setIndex: number) => void;
 };
 
 export const Exercise = ({
@@ -85,14 +84,14 @@ export const Exercise = ({
         <h4 className="ui field dividing header required">Reps</h4>
         <h4 className="ui field dividing header required">Weight (Kg)</h4>
       </div>
-      {exercise.sets.map((set: setRowType, index: number) => {
+      {exercise.sets.map((set: setRowType, setIndex: number) => {
         return (
-          <div key={index}>
+          <div key={setIndex}>
             <SetsRow
-              index={index}
+              index={setIndex}
               set={set}
-              handleRemoveSetClick={removeSet}
-              handleInputChange={saveSet}
+              handleRemoveSetClick={() => removeSet(exerciseIndex, setIndex)}
+              handleInputChange={() => saveSet(exerciseIndex, set.set, set.reps, set.weight)}
             />
           </div>
         );
