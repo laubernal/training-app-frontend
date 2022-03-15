@@ -70,7 +70,7 @@ export const SignUp = (): JSX.Element => {
         <label>Email</label>
         <div className="ui left icon input">
           <input
-            type="text"
+            type="email"
             placeholder="Enter your email"
             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
               setEmail(event.target.value);

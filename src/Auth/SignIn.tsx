@@ -29,13 +29,12 @@ export const SignIn = (): JSX.Element => {
   return (
     <form className="ui form login" onSubmit={handleSubmit}>
       <SectionTitle text="Sign in" /> <br />
-
       <div className="field required">
         <label>Email</label>
         <div className="ui left icon input">
           <Input
             name="email"
-            type="text"
+            type="email"
             placeholder="Enter your email"
             value={email}
             handleInputChange={(event: any) => {
@@ -46,7 +45,6 @@ export const SignIn = (): JSX.Element => {
           <i className="at icon"></i>
         </div>
       </div>
-
       <div className="field required">
         <label>Password</label>
         <div className="ui left icon input">
@@ -62,7 +60,6 @@ export const SignIn = (): JSX.Element => {
           <i className="lock icon"></i>
         </div>
       </div>
-
       <div>
         <p>
           Need an account? <Link to="/signup">Sign up!</Link>
@@ -72,7 +69,6 @@ export const SignIn = (): JSX.Element => {
           <Route path="/signup" element={<SignUp />} />
         </Routes>
       </div>
-      
       <Button text="Sign in" type="submit" />
     </form>
   );

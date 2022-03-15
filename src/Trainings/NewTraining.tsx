@@ -6,7 +6,8 @@ import { useTraining } from '../Hooks/useTraining';
 import { Exercise } from './Exercise';
 
 export const NewTraining = (): JSX.Element => {
-  const { training, addExercise, saveExercise, removeExercise, removeSet, addSet, saveSet } = useTraining();
+  const { training, addExercise, saveExercise, removeExercise, removeSet, addSet, saveSet } =
+    useTraining();
   const { categories, setCategories } = useCategories();
 
   useEffect(() => {

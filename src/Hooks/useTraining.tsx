@@ -1,11 +1,17 @@
 import { useState } from 'react';
-import { setRowType } from '../types';
+import { categoryType, setRowType } from '../types';
 
 export const useTraining = () => {
   const [training, setTraining] = useState({
     date: '',
     title: '',
-    exercises: [{ category: '', exerciseName: '', sets: [{ set: '', reps: '', weight: '' }] }],
+    exercises: [
+      {
+        category: { id: '', categoryName: '' },
+        exerciseName: '',
+        sets: [{ set: '', reps: '', weight: '' }],
+      },
+    ],
   });
 
   const addSet = (exerciseIndex: number): void => {
@@ -22,6 +28,8 @@ export const useTraining = () => {
   };
 
   const saveSet = (exerciseIndex: number, set: string, reps: string, weight: string): void => {
+    console.log('SAVE SET');
+
     const newSetList = [...training.exercises[exerciseIndex].sets];
 
     const newSet = {
@@ -41,7 +49,6 @@ export const useTraining = () => {
   };
 
   const removeSet = (exerciseIndex: number, setIndex: number): void => {
-    console.log('REMOVE SET CLIKED', setIndex);
     const newSetList = [...training.exercises[exerciseIndex].sets];
 
     newSetList.splice(setIndex, 1);
@@ -60,7 +67,11 @@ export const useTraining = () => {
         ...prevState,
         exercises: [
           ...prevState.exercises,
-          { category: '', exerciseName: '', sets: [{ set: '', reps: '', weight: '' }] },
+          {
+            category: { id: '', categoryName: '' },
+            exerciseName: '',
+            sets: [{ set: '', reps: '', weight: '' }],
+          },
         ],
       };
       return newState;
@@ -69,7 +80,7 @@ export const useTraining = () => {
 
   const saveExercise = (
     index: number,
-    category: string,
+    category: categoryType,
     exerciseName: string,
     sets: setRowType[]
   ): void => {
@@ -80,7 +91,6 @@ export const useTraining = () => {
       exerciseName,
       sets,
     };
-    console.log('NEW EXERCISE', newExercise);
 
     newExerciseList.splice(index, 1, newExercise);
 
@@ -91,19 +101,12 @@ export const useTraining = () => {
       };
       return newState;
     });
-    console.log('TRAINING', training.exercises);
   };
 
   const removeExercise = (exerciseIndex: number): void => {
-    console.log('EXERCISES BEFORE', training.exercises);
-
-    console.log('EX INDEX TO REMOVE', exerciseIndex);
-
     const newExerciseList = [...training.exercises];
 
     newExerciseList.splice(exerciseIndex, 1);
-
-    console.log('EXERCISES AFTER', newExerciseList);
 
     setTraining(prevState => {
       const newState = {

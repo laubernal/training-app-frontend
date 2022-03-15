@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 import { Button, Input } from '../components/index';
 import { setRowType } from '../types';
@@ -7,7 +7,7 @@ type SetsRowProps = {
   index: number;
   set: setRowType;
   handleRemoveSetClick: (index: number) => void;
-  handleInputChange: () => void;
+  handleInputChange: (event: any) => void;
 };
 
 export const SetsRow = ({

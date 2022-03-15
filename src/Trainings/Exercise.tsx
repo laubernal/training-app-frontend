@@ -1,20 +1,19 @@
 import React, { useState } from 'react';
 
 import { Button, Dropdown, Input } from '../components/index';
-import { setRowType } from '../types';
+import { categoryType, exerciseType, setRowType } from '../types';
 import { SetsRow } from './index';
-
-type exerciseType = {
-  category: string;
-  name: string;
-  sets: setRowType[];
-};
 
 type exerciseProps = {
   exerciseIndex: number;
   exercise: exerciseType;
   categories: { label: string; value: string }[];
-  saveExercise: (index: number, category: string, exerciseName: string, sets: setRowType[]) => void;
+  saveExercise: (
+    index: number,
+    category: categoryType,
+    exerciseName: string,
+    sets: setRowType[]
+  ) => void;
   removeExercise: (exerciseIndex: number) => void;
   addSet: (exerciseIndex: number) => void;
   saveSet: (exerciseIndex: number, set: string, reps: string, weight: string) => void;
@@ -95,7 +94,9 @@ export const Exercise = ({
               index={setIndex}
               set={set}
               handleRemoveSetClick={() => removeSet(exerciseIndex, setIndex)}
-              handleInputChange={() => saveSet(exerciseIndex, set.set, set.reps, set.weight)}
+              handleInputChange={() => {
+                saveSet(exerciseIndex, set.set, set.reps, set.weight);
+              }}
             />
           </div>
         );
@@ -111,9 +112,11 @@ export const Exercise = ({
         <Button
           text="Submit exercise"
           type="submit"
-          onClick={() =>
-            saveExercise(exerciseIndex, exercise.category, exercise.name, exercise.sets)
-          }
+          onClick={() => {
+            const category = { id: categorySelected.value, categoryName: categorySelected.label };
+
+            saveExercise(exerciseIndex, category, exercise.exerciseName, exercise.sets);
+          }}
         />
       </div>
     </div>
